@@ -1,0 +1,70 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  robots?: string;
+}
+
+const {
+  title = '뭐 찾으려고 했더라? | 인터넷 미아 안내소',
+  description = '분명 찾으려던 게 있었는데, 막상 검색창을 열면 생각이 안 나죠? 괜찮아요. 인터넷 미아 안내소에 잘 오셨어요.',
+  canonicalPath = '/',
+  robots = 'index, follow',
+} = Astro.props;
+
+const site = Astro.site ?? new URL('https://threelightstudio.github.io');
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const cleanPath = canonicalPath.replace(/^\//, '');
+const canonical = new URL(`${basePath}/${cleanPath}`.replace(/\/\/$/, '/') || '/', site).toString();
+const ogImage = new URL(`${basePath}/og.png`, site).toString();
+const homeUrl = `${import.meta.env.BASE_URL}`;
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#f7f4ee" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content="인터넷 미아 안내소" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="뭐 찾으려고 했더라? - 인터넷 미아 안내소" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">본문으로 바로가기</a>
+    <header class="site-header">
+      <a class="wordmark" href={homeUrl} aria-label="인터넷 미아 안내소 홈">
+        <span class="wordmark-mark" aria-hidden="true">?</span>
+        <span>인터넷 미아 안내소</span>
+      </a>
+      <span class="header-note">검색창을 열었다가 여기까지 오셨네요</span>
+    </header>
+    <main id="main-content">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <span>오늘도 원하는 걸 잘 찾아내시길 바라요.</span>
+      <span>
+        인터넷 미아 안내소 · 2026 ·
+        <a class="studio-link" href="https://threelight-studio.com/">ThreeLight Studio</a>
+      </span>
+    </footer>
+  </body>
+</html>

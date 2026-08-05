@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL;
+const namuUrl = 'https://namu.wiki/w/%EC%9D%B8%ED%84%B0%EB%84%B7%20%EB%AF%B8%EC%95%84%20%EC%A6%9D%ED%9B%84%EA%B5%B0';
+const relatedSearches = [
+  '뭐 검색하려고 했더라',
+  '그거 그거 뭐더라',
+  '그거 뭐냐',
+  '그 뭐냐 그거 있잖아',
+  '뭐 검색하려고 했지',
+  '내가 뭐 하려고 했더라',
+  '아 그 뭐더라',
+  '그거 있잖아 그거',
+];
+---
+
+<Layout>
+  <div class="page-shell">
+    <section class="search-stage" aria-labelledby="page-title">
+      <div class="search-intro">
+        <p class="kicker">검색 기록 · 방금 전</p>
+        <h1 id="page-title" aria-label="뭐 찾으려고 했더라?">
+          <span class="title-line" aria-hidden="true">뭐 찾으려고</span>
+          <span class="title-line" aria-hidden="true">했더라?</span>
+        </h1>
+        <p class="intro-copy">
+          분명 찾으려던 게 있었는데, 막상 검색창을 열면 생각이 안 나죠?<br />
+          괜찮아요. 인터넷 미아 안내소에 잘 오셨어요.
+        </p>
+      </div>
+
+      <form class="search-box" action={`${base}#verdict`} role="search">
+        <label class="sr-only" for="search-query">검색어</label>
+        <input id="search-query" name="q" value="뭐 찾으려고 했더라?" readonly />
+        <button type="submit" aria-label="검색 결과 보기">검색</button>
+      </form>
+
+      <div class="result-meta" aria-label="검색 결과 정보">
+        검색 결과 1개 <span aria-hidden="true">·</span> 0.01초
+      </div>
+
+      <article class="search-result" aria-labelledby="result-title">
+        <p class="result-source">internet-lost.example <span aria-hidden="true">›</span> 인터넷 미아 안내소</p>
+        <h2 id="result-title"><a href="#verdict">뭐 찾으려고 했더라? | 인터넷 미아 안내소</a></h2>
+        <p class="result-url">https://internet-lost.example/what-was-i-searching-for</p>
+        <p class="result-snippet">
+          뭘 찾으려고 했지? 그거 이름이 뭐였더라… 검색창을 여는 순간 찾으려던 걸 잊어버린
+          사람들을 위한 작은 안내소예요.
+        </p>
+        <a class="result-action" href="#verdict">들어가 보기 <span aria-hidden="true">↗</span></a>
+      </article>
+    </section>
+
+    <section class="verdict-section" id="verdict" aria-labelledby="verdict-title">
+      <div class="verdict-card">
+        <p class="stamp">안내소에 도착했어요</p>
+        <p class="verdict-overline">찾으셨네요.</p>
+        <h2 id="verdict-title" aria-label="인터넷에서 잠깐 길을 잃으셨네요.">
+          <span class="title-line" aria-hidden="true">인터넷에서 잠깐</span>
+          <span class="title-line" aria-hidden="true">길을 잃으셨네요.</span>
+        </h2>
+        <p class="verdict-copy">
+          검색창을 열자마자<br class="desktop-break" />
+          뭘 찾으려 했는지 깜빡하셨네요.
+        </p>
+        <p class="verdict-small">
+          괜찮아요. 찾으려던 건 잠시 사라졌지만,<br />
+          이 페이지까지는 잘 찾아오셨어요.
+        </p>
+        <div class="verdict-actions">
+          <a class="button button-primary" href={namuUrl} target="_blank" rel="noopener noreferrer">
+            인터넷 미아 증후군이 뭔지 알아보기 <span aria-hidden="true">↗</span>
+          </a>
+          <a class="button button-secondary" href={`${base}`}>처음으로 돌아가기</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="related-section" aria-labelledby="related-label">
+      <div>
+        <p class="kicker" id="related-label">관련 검색어</p>
+      </div>
+      <ul class="related-list">
+        {relatedSearches.map((search) => (
+          <li><a href="#verdict">{search}<span aria-hidden="true">↗</span></a></li>
+        ))}
+      </ul>
+      <p class="related-note">
+        단어 하나라도 떠오르면 다행이에요. 아니어도 괜찮아요. 검색창을 닫고 나면 다시 생각날 때도 많으니까요.
+      </p>
+    </section>
+
+    <aside class="share-note" aria-label="페이지 안내">
+      <span class="share-icon" aria-hidden="true">✦</span>
+      <p>여기까지 찾으셨으니 오늘 검색은 절반쯤 성공이에요.</p>
+    </aside>
+  </div>
+</Layout>
