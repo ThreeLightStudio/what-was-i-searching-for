@@ -26,8 +26,8 @@ const requiredHtml = [
   `<meta property="og:url" content="${canonical}"`,
   '<meta property="og:image"',
   'https://namu.wiki/w/',
-  '뭐 검색하려고 했더라',
-  '그거 그거 뭐더라',
+  '그그 그그 뭐더라',
+  '그 뭐냐 그거 있잖아',
 ];
 
 for (const marker of requiredHtml) {
