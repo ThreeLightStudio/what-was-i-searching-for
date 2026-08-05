@@ -437,7 +437,9 @@ h1 {
   font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: -0.04em;
+  overflow-wrap: normal;
   text-decoration: none;
+  word-break: keep-all;
 }
 
 .related-list a span {
