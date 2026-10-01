@@ -1,5 +1,8 @@
 [English README](./README.md)
 
+> **상태:** 유지보수는 종료되었습니다. 공개 페이지와 소스 코드를 과거 프로젝트의 참고 자료로 보존합니다.
+
+
 # 뭐 찾으려고 했더라?
 
 검색창을 열었는데, 왜 열었는지 바로 잊어버린 순간을 위한 작은 인터넷 미아 안내소입니다.
@@ -41,6 +44,8 @@ Astro 타입 검사, 정적 빌드, 메타데이터, canonical URL, Open Graph, 
 
 사이트 주소나 프로젝트 경로를 바꿔야 한다면 `.env.example`을 참고해 `SITE_ORIGIN`과 `BASE_PATH`를 설정하세요.
 
-## 라이선스
+## 구현과 검증
 
-MIT License를 따릅니다. 자세한 내용은 [LICENSE](./LICENSE)를 확인하세요.
+- [Astro 경로 설정](astro.config.mjs)
+- [메타데이터, canonical URL, sitemap, robots, 링크 검사](scripts/verify.mjs)
+- [GitHub Pages 배포 workflow](.github/workflows/deploy.yml)

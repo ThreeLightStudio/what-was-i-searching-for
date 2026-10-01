@@ -1,5 +1,8 @@
 [한국어 README](./README.ko.md)
 
+> **Status:** Maintenance has ended. This repository is retained as a reference; the published page and source are historical project artifacts.
+
+
 # What Was I Looking For?
 
 A tiny internet lost-and-found for the moment you open a search tab and immediately forget why you came.
@@ -41,6 +44,8 @@ The project lives in [ThreeLightStudio/what-was-i-searching-for](https://github.
 
 To use a different site origin or project path, copy `.env.example` and set `SITE_ORIGIN` and `BASE_PATH` as needed.
 
-## License
+## Implementation and verification
 
-Released under the MIT License. See [LICENSE](./LICENSE) for details.
+- [Astro base-path configuration](astro.config.mjs)
+- [Metadata, canonical URL, sitemap, robots and link checks](scripts/verify.mjs)
+- [GitHub Pages deployment workflow](.github/workflows/deploy.yml)
